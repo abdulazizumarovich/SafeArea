@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="safeAreaFrameStyle" format="reference" />
+
+    <declare-styleable name="SafeAreaFrame">
+        <attr name="edges">
+            <flag name="none" value="0x00" />
+
+            <flag name="left" value="0x01" />
+            <flag name="top" value="0x02" />
+            <flag name="right" value="0x04" />
+            <flag name="bottom" value="0x08" />
+
+            <!-- Left + Right -->
+            <flag name="horizontal" value="0x05" />
+
+            <!-- Top + Bottom -->
+            <flag name="vertical" value="0x0A" />
+
+            <flag name="all" value="0x0F" />
+        </attr>
+    </declare-styleable>
+
+    <style name="Base.SafeAreaFrame" parent="android:Widget">
+        <item name="edges">all</item>
+    </style>
+
+    <style name="SafeAreaFrame" parent="Base.SafeAreaFrame" />
+</resources>
