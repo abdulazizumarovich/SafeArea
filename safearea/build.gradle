@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.vanniktech.maven.publish)
+    id("signing")
 }
 
 android {
@@ -22,6 +24,44 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+signing {
+//    useGpgCmd()
+    sign(publishing.publications)
+}
+
+mavenPublishing {
+    publishToMavenCentral {
+        true
+    }
+
+    coordinates("io.github.abdulazizumarovich", "safearea", "0.0.3")
+
+    pom {
+        name = "SafeArea"
+        description = "An utility to simplify system insets overlap handling."
+        inceptionYear = "2025"
+        url = "https://github.com/abdulazizumarovich/safearea"
+        licenses {
+            license {
+                name = "MIT License"
+                url = "https://opensource.org/licenses/MIT"
+            }
+        }
+        developers {
+            developer {
+                id = "abdulazizumarovich"
+                name = "Abdulaziz Umarovich"
+                url = "https://github.com/abdulazizumarovich"
+            }
+        }
+        scm {
+            url = "https://github.com/abdulazizumarovich/safearea"
+            connection = "scm:git:git://github.com/abdulazizumarovich/safearea.git"
+            developerConnection = "scm:git:ssh://git@github.com/abdulazizumarovich/safearea.git"
+        }
     }
 }
 
